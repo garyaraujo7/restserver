@@ -1,0 +1,273 @@
+<!--Cabecera-->
+<%- include("template/cabecera", {tituloWeb: 'Página de inicio'}) %>
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../home" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>D</b>YS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Yesal</b>DAYETEN</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../../img/avatar5.png" class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= user.nombre%> </span> _ <span id="UsuariosA" class="hidden-xs"> <%= user.apellidoP %></span> : <span id="UsuariosR" class="hidden-xs"><%= user.rol %> </span> 
+            </a>
+            <ul class="dropdown-menu">
+              <!-- DEsconectar -->
+              <li class="user-footer">
+                <a href="../desconectar" class="btn btn-primary btn-block btn-flat">Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!--  Barra de navegacion -->
+  <%- include("template/barradenavegacion") %>
+  <!-- Contenido de la Pagina  -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Panel de Control
+        <small>Control panel</small>
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <!-- HORNOS -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>1</h3>
+
+              <p>MODULO</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-dashboard "></i>
+            </div>
+            <a href="/calcinacion" class="small-box-footer">CALCINACIÓN <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+
+        <div class="col-lg-1 col-xs-6 align-middle ">
+          <br>
+          <br>
+          <div class="small-box align-middle">
+              <a class="small-box-footer align-middle"><i class="fa fa-arrow-circle-right align-middle"></i></a>
+          </div>
+        </div>
+
+         <!-- ./cinta transportadora -->
+         <div class="col-lg-3 col-xs-6">
+          <!-- small bo -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>2</h3>
+
+              <p>MODULO</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-road"></i>
+            </div>
+            <a href="/cinta" class="small-box-footer">CINTA TRANSPORTADORA <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-1 col-xs-6 align-middle ">
+          <br>
+          <br>
+          <div class="small-box align-middle">
+              <a class="small-box-footer align-middle"><i class="fa fa-arrow-circle-right align-middle"></i></a>
+          </div>
+        </div>
+        
+        <!-- ./MOLINOS -->
+        <div class="col-lg-3 col-xs-6 ">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>3<sup style="font-size: 20px"></sup></h3>
+
+              <p>MODULO</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-tasks"></i>
+            </div>
+            <a href="/molino" class="small-box-footer">MOLINO <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <!-- ./col Balanza -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>4</h3>
+
+              <p>MODULO</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-fw fa-balance-scale"></i>
+            </div>
+            <a href="/balanza" class="small-box-footer">BALANZA <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-1 col-xs-6 align-middle ">
+          <br>
+          <br>
+          <div class="small-box align-middle">
+              <a class="small-box-footer align-middle"><i class="fa fa-arrow-circle-right align-middle"></i></a>
+          </div>
+        </div>
+        <!-- ./cinta transportadora -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small bo -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>5</h3>
+
+              <p>MODULO</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-road"></i>
+            </div>
+            <a href="/cinta" class="small-box-footer">CINTA TRANSPORTADORA <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        
+        
+        <!-- ./col -->
+      </div>
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-6 connectedSortable">
+
+          <!-- Informacion -->
+          <div class="box box-solid bg-green-gradient">
+            <div class="box-header">
+              <i class="fa fa-info"></i>
+
+              <h3 class="box-title">Información Materia Prima</h3>
+              <!-- tools box -->
+              <div class="pull-right box-tools">
+                <!-- button with a dropdown -->
+                
+
+              </div>
+              <!-- /. tools -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-black">
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- Progress bars -->
+                  <div class="clearfix">
+                    <span class="pull-left">Piedra Caliza</span>
+                    <small class="pull-right">1500 Toneladas</small>
+                  </div>
+                  <div class="progress xs">
+                    <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
+                  </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6"> 
+                  <div class="clearfix">
+                    <span class="pull-left">Leña </span>
+                    <small class="pull-right">200 Toneladas</small>
+                  </div>
+                  <div class="progress xs">
+                    <div class="progress-bar progress-bar-green" style="width: 60%;"></div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> 
+                  <div class="clearfix">
+                    <a href="/iniciociclo" type="a" class="btn btn-block btn-primary">INICIAR CICLO</a>
+                  </div>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.box -->
+        </section>
+        <section class="col-lg-6 connectedSortable">
+          <!-- Informacion -->
+          <div class="box box-solid bg-green-gradient">
+            <div class="box-header">
+              <i class="fa fa-info"></i>
+              <h3 class="box-title">Información Almacen</h3>
+              <!-- tools box -->
+              <div class="pull-right box-tools">
+                <!-- button with a dropdown -->
+              </div>
+              <!-- /. tools -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-black">
+              <div class="row">
+                  <!-- col der-->
+                <div class="col-sm-6">
+                  <!-- Progress bars -->
+                  <div class="clearfix">
+                    <span class="pull-left">Bolsas en almacen</span>
+                    <small class="pull-right">500 Unidades</small>
+                  </div>
+                  <div class="progress xs">
+                    <div class="progress-bar progress-bar-green" style="width: 10%;"></div>
+                  </div>
+                </div>
+                <!-- /.col izq-->
+                <div class="col-sm-6"> 
+                  <div class="clearfix">
+                    <span class="pull-left">Bolsas Vacias</span>
+                    <small class="pull-right">18000 Unidades</small>
+                  </div>
+                  <div class="progress xs">
+                    <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> 
+                  <div class="clearfix">
+                    <a href="/finciclo" type="a" class="btn btn-block btn-danger">FINALIZAR CICLO</a>
+                  </div>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.box -->
+        </section>
+      </div>
+      
+    </section>
+    <!-- -->
+  </div>
+  <!-- /.row (main row) -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.desde el footer al final -->
+<%- include("template/footer") %>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!--Cabecera-->
+<%- include("template/cabecera", {tituloWeb:'EtapaMolino'}) %>
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../home" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>D</b>YS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Yesal</b>DAYETEN</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../../img/avatar5.png" class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= user.nombre%> </span> _ <span id="UsuariosA" class="hidden-xs"> <%= user.apellidoP %></span> : <span id="UsuariosR" class="hidden-xs"><%= user.rol %> </span> 
+            </a>
+            <ul class="dropdown-menu">
+              <!-- DEsconectar -->
+              <li class="user-footer">
+                <a href="../desconectar" class="btn btn-primary btn-block btn-flat">Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+<!--  Barra de navegacion    -->
+  <%- include("template/barradenavegacion") %>
+    <!-- Contenido de la Pagina  -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Reporte Etapa Horno 
+        <small>
+            Total lesturas = <%=  total%>    
+        </small>
+
+      </h1>
+      
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>ID</th>
+                  <th>Fecha de Inicio </th>
+                  <th>Hora de Inicio </th>
+                  <th>Fecha de Finalización </th>
+                  <th>Hora de Finalización </th>
+                  <th>Usuario</th>
+                </tr>
+                <tbody>
+                  <% if (molino.length > 0) { %>
+                    <% molino.forEach(molino => { %>
+                      <tr>
+                        <th scope="row"><%= molino._id %></th>
+                        <td><%= molino.fecha_inicio%></td>
+                        <td><%= molino.hora_inicio%></td>
+                        <td><%= molino.fecha_fin%></td>
+                        <td><%= molino.hora_fin%></td>
+                        <td><%= molino.usuario%></td>
+                        <td>
+                          <a
+                            class="btn btn-warning btn-sm"
+                            href="/infosemanalMolino/<%= molino._id %>"
+                          >
+                              Generar Reporte
+                        </td>
+                      </tr>
+                    <% }) %> 
+                  <% } %>    
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+     
+     
+       
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.desde el footer al final -->
+
+  <%- include("template/footer") %>
+</body>
+</html>

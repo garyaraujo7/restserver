@@ -1,0 +1,158 @@
+<!--Cabecera-->
+<%- include("template/cabecera", {tituloWeb: 'Reportes'}) %>
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../home" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>D</b>YS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Yesal</b>DAYETEN</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../../img/avatar5.png" class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= user.nombre%> </span> _ <span id="UsuariosA" class="hidden-xs"> <%= user.apellidoP %></span> : <span id="UsuariosR" class="hidden-xs"><%= user.rol %> </span> 
+            </a>
+            <ul class="dropdown-menu">
+              <!-- DEsconectar -->
+              <li class="user-footer">
+                <a href="../desconectar" class="btn btn-primary btn-block btn-flat">Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!--  Barra de navegacion    -->
+  <%- include("template/barradenavegacion") %>
+  <!-- Contenido de la Pagina  -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Panel de Reportes
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <!-- HORNOS -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>1</h3>
+
+              <p>REPORTES</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-dashboard "></i>
+            </div>
+            <a href="/reportescalcinacion" class="small-box-footer">CALCINACIÓN <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./MOLINOS -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>2<sup style="font-size: 20px"></sup></h3>
+
+              <p>REPORTES</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-tasks"></i>
+            </div>
+            <a href="/reportesmolino" class="small-box-footer">MOLINO <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./cinta transportadora -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small bo -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>3</h3>
+
+              <p>REPORTES</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-road"></i>
+            </div>
+            <a href="/cinta/reportescinta" class="small-box-footer">CINTA TRANSPORTADORA <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col Balanza -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>4</h3>
+
+              <p>REPORTES</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-fw fa-balance-scale"></i>
+            </div>
+            <a href="/balanza/reportesbalanza" class="small-box-footer">BALANZA <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <!-- ./col Materia prima -->
+        <!-- ./col -->
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-primary">
+            <div class="box-header">
+              <i class="fa fa-edit"></i>
+
+              <h3 class="box-title">Reportes Ciclos de Procesamiento</h3>
+            </div>
+            <div class="box-body pad table-responsive">
+              <table class="table table-bordered text-center">
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="/infosemanalCiclo" type="a" class="btn btn-block btn-warning">Reporte Ciclo</a>
+                  </td>
+                  <td>
+                    <a href="/infomensual" type="a" class="btn btn-block btn-danger">Reporte Mensual</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box -->
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+
+    </section>
+    <!-- -->
+  </div>
+  <!-- /.row (main row) -->
+
+  <!-- /.content -->
+</div>
+<!-- /.desde el footer al final -->
+
+<%- include("template/footer") %>
+</body>
+
+</html>

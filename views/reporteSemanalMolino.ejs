@@ -1,0 +1,201 @@
+<!--Cabecera-->
+<%- include("template/cabecera", {tituloWeb: 'InformeMolino'}) %>
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../home" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>D</b>YS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Yesal</b>DAYETEN</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../../img/avatar5.png" class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= user.nombre%> </span> _ <span id="UsuariosA" class="hidden-xs"> <%= user.apellidoP %></span> : <span id="UsuariosR" class="hidden-xs"><%= user.rol %> </span> 
+            </a>
+            <ul class="dropdown-menu">
+              <!-- DEsconectar -->
+              <li class="user-footer">
+                <a href="../desconectar" class="btn btn-primary btn-block btn-flat">Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+<!--  Barra de navegacion    -->
+  <%- include("template/barradenavegacion") %>
+    <!-- Contenido de la Pagina  -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Informe      
+      </h1>
+    </section>
+    <!-- Main content -->
+    <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-globe"></i> Informe: Semanal Etapa Molino Actualizado
+            <small class="pull-right"> Fecha: <p id="fecha_actual"></p> </small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- info row -->
+      <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+          De:
+          <address>
+            <strong><%= user.nombre%></strong><br>
+            <strong><%= user.apellidoP%></strong><br>
+            <strong><%= user.apellidoM%></strong><br>
+            <strong><%= user.rol%></strong><br>
+          </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+          <!-- /.col -->
+         Detalle:
+          <address>
+            <strong>Usuario: </strong><%= molino.usuario %><br>
+            <strong>Fecha de Inicio: </strong> <%= molino.fecha_inicio %>
+            <strong>Hora: </strong><%=molino.hora_inicio%><br>
+            <strong>Fecha de Finalización: </strong> <%= molino.fecha_fin %>
+            <strong>Hora: </strong><%=molino.hora_fin%><br>
+            <strong>Velocidad: </strong> Estandar 350rpm<br>
+          </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+          <!-- /.col -->
+         Descripcion de Promedio:
+          <address>
+            <strong>Lecturas Molino Total:</strong>Entre 95 a 105 Buena <br>
+            <strong>Temperatura Adecuada: </strong>Entre 70 a 75 Buena <br>
+            <strong>Alerta Alta: </strong> Entre 0 a 25 Buena <br>
+            <strong>Alerta Peligro: </strong> Entre 0 a 0 Buena <br>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      <!-- Table row -->
+      <div class="row">
+        <div class="col-xs-12 table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre Aterta</th>
+              <th>Total Lectura</th>
+              <th>Promedio</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td>Lectura Temperatura Molino</td>
+              <td><%= totalC %></td>
+              <td> <%= promedio = (totalC * 100)/800 %></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Temperatura Adecuada</td>
+              <td><%= totalAad %></td>
+              <td><%= promedio = (totalAad * 100)/totalC %></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Alerta Temperatura Alta</td>
+              <td><%= totalAal %></td>
+              <td><%= promedio = (totalAal * 100)/totalC %></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Alertas Temperatura Peligro</td>
+              <td><%= totalAp %></td>
+              <td><%= promedio = (totalAp * 100)/totalC %></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <!-- accepted payments column -->
+    
+        <!-- /.col -->
+        <div class="col-xs-6">
+          <p class="lead"></p>
+
+          <div class="table-responsive">
+            <!-- /.col 
+            <table class="table">
+              <tr>
+                <th style="width:50%">C1:</th>
+                <td>$250.30</td>
+              </tr>
+              <tr>
+                <th>C2</th>
+                <td>$10.34</td>
+              </tr>
+              <tr>
+                <th>C3:</th>
+                <td>$5.80</td>
+              </tr>
+              <tr>
+                <th>C4:</th>
+                <td>$265.24</td>
+              </tr>
+            </table>
+          -->
+          </div>
+        </div>
+        
+      </div>
+      <!-- /.row -->
+
+      <!-- this row will not appear when printing -->
+      <div class="row no-print">
+        <div class="col-xs-12">
+          <a href="\invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Imprimir</a>
+          <a type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> Generar PDF
+          </a>
+        </div>
+      </div>
+      <div class="row no-print">
+        
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.desde el footer al final -->
+
+  <%- include("template/footer") %>
+  
+    <script>
+    date = new Date();
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    day = date.getDate();
+    document.getElementById("fecha_actual").innerHTML = year + "-" + month + "-" + day  ;
+    </script>
+</body>
+</html>

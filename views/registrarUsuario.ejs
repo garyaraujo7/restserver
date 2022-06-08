@@ -1,0 +1,142 @@
+<!--Cabecera-->
+<%- include("template/cabecera", {tituloWeb: 'Registrar Usuario'}) %>
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../home" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>D</b>YS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Yesal</b>DAYETEN</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../../img/avatar5.png" class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= user.nombre%> </span> _ <span id="UsuariosA" class="hidden-xs"> <%= user.apellidoP %></span> : <span id="UsuariosR" class="hidden-xs"><%= user.rol %> </span> 
+            </a>
+            <ul class="dropdown-menu">
+              <!-- DEsconectar -->
+              <li class="user-footer">
+                <a href="../desconectar" class="btn btn-primary btn-block btn-flat">Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!--  Barra de navegacion    -->
+  <%- include("template/barradenavegacion") %>
+  <!-- Contenido de la Pagina  -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Registrar Usuario
+        <small>aqui comienzatodo</small>
+      </h1>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="register-box">
+          <div class="register-box-body">
+            <form action="../../usuarios/" method="post">
+              <div class="form-group has-feedback">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+              </div>
+              <div class="form-group has-feedback">
+                <label>Apellido Paterno</label>
+                <input type="text" class="form-control" placeholder="Apellido Paterno" name="apellidoP">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+              </div>
+              <div class="form-group has-feedback">
+                <label>Apellido Materno</label>
+                <input type="text" class="form-control" placeholder="Apellido Materno" name="apellidoM">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+              </div>
+              <div class="form-group has-feedback">
+                <label>Celular</label>
+                <input type="number" class="form-control" placeholder="Numero de Celular" name="celular">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+              </div>
+              <div class="form-group has-feedback">
+                <label>Correo Electronico</label>
+                <input type="email" class="form-control" placeholder="Correo Electronico" name="correo">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              </div>
+              <div class="form-group has-feedback">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              </div>
+              <div class="form-group">
+                <label>Rol</label>
+                <select class="form-control select2" style="width: 100%;" name="rol">
+                  <option>ROL_SUPERVISOR</option>
+                  <option>ROL_ADMINISTRADOR</option>
+
+                </select>
+              </div>
+              <div class="row">
+                <div class="col-xs-8">
+
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                  <button href="../../" type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+                </div>
+                <!-- /.col -->
+              </div>
+            </form>
+
+          </div>
+          <!-- /.form-box -->
+        </div>
+        <!-- /.register-box -->
+
+        <!-- jQuery 3 -->
+        <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- iCheck -->
+        <script src="../../plugins/iCheck/icheck.min.js"></script>
+        <script>
+          $(function () {
+            $('input').iCheck({
+              checkboxClass: 'icheckbox_square-blue',
+              radioClass: 'iradio_square-blue',
+              increaseArea: '20%' // optional
+            });
+          });
+        </script>
+
+
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.desde el footer al final -->
+
+  <%- include("template/footer") %>
+  </body>
+
+  </html>

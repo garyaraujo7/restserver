@@ -1,0 +1,148 @@
+<!--Cabecera-->
+<%- include("template/cabecera", {tituloWeb: 'AlertasMolino'}) %>
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../home" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>D</b>YS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Yesal</b>DAYETEN</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../../img/avatar5.png" class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= user.nombre%> </span> _ <span id="UsuariosA" class="hidden-xs"> <%= user.apellidoP %></span> : <span id="UsuariosR" class="hidden-xs"><%= user.rol %> </span> 
+            </a>
+            <ul class="dropdown-menu">
+              <!-- DEsconectar -->
+              <li class="user-footer">
+                <a href="../desconectar" class="btn btn-primary btn-block btn-flat">Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+<!--  Barra de navegacion    -->
+  <%- include("template/barradenavegacion") %>
+    <!-- Contenido de la Pagina  -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <!-- /.box -->
+            <div class="box">
+              <div class="box-header">
+                
+                <h1 class="box-title">
+                  Alertas Molino
+                  <small>
+                      Total lesturas = <%= total %>    
+                  </small>
+                </h1>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Fecha Lectura</th>
+                      <th>Temperatura ºC</th>
+                      <th>Alerta</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <% if (alerta_molino.length > 0) { %>
+                        <% alerta_molino.forEach(alerta_molino => { %>
+                            <tr>
+                                <th scope="row"><%= alerta_molino._id %></th>
+                                <td><%= alerta_molino.fecha%></td>
+                                <td ><%= alerta_molino.temp_molino%></td>
+                                <td>
+                                  <% if (alerta_molino.alerta == "Baja" ) { %>
+                                        <span class="label label-info"><%= alerta_molino.alerta%></span>
+                                  <% }
+                                  else{
+                                      if (alerta_molino.alerta == "Adecuada" ) {%>
+                                        <span class="label label-success"><%= alerta_molino.alerta%></span>
+                                      <% }
+                                      else{
+                                        if (alerta_molino.alerta == "Alta" ) {%>
+                                          <span class="label label-warning"><%= alerta_molino.alerta%></span>
+                                        <% } 
+                                          else{%>
+                                            <span class="label label-danger"><%= alerta_molino.alerta%></span>
+                                          <% } %>
+                                        <% } %>
+                                  <% } %>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>Fecha Lectura</th>
+                    <th>Temperatura ºC</th>
+                    <th>Alerta</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+  <!-- /.desde el footer al final -->
+
+  <%- include("template/footer") %>
+  <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- DataTables -->
+  <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <!-- SlimScroll -->
+  <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../../dist/js/demo.js"></script>
+    <script>
+      $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+          'paging'      : true,
+          'lengthChange': false,
+          'searching'   : false,
+          'ordering'    : true,
+          'info'        : true,
+          'autoWidth'   : false
+        })
+      })
+    </script>
+</body>
+</html>

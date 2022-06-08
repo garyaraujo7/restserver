@@ -1,0 +1,232 @@
+<!--Cabecera-->
+<%- include("template/cabecera", {tituloWeb: ' CintaTransportadora_Control'}) %>
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>D</b>YS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Yesal</b>DAYETEN</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../../img/avatar5.png" class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= user.nombre%> </span> _ <span id="UsuariosA" class="hidden-xs"> <%= user.apellidoP %></span> : <span id="UsuariosR" class="hidden-xs"><%= user.rol %> </span> 
+            </a>
+            <ul class="dropdown-menu">
+              <!-- DEsconectar -->
+              <li class="user-footer">
+                <a href="../desconectar" class="btn btn-primary btn-block btn-flat">Cerrar Sesión</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!--  Barra de navegacion    -->
+  <%- include("template/barradenavegacion") %>
+  <!-- Contenido de la Pagina  -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+      <h1>
+        Panel de Control Cinta Transportadora
+        <small>
+          <h3>
+            Servidor:
+            <span id="lblOnline" class="text-success"> Conectado</span>
+            <span id="lblOffline" class="text-danger"> Desconecctado</span>
+          </h3>
+        </small>
+      </h1>
+      
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- Prueba del nuevo grafico -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <i class="fa fa-fw fa-road"></i>
+
+              <h3 class="box-title">Monitoreo Cinta Transportadora <span  class="text-success">Hora :</span> <span id="show_time" class="p-3 mb-2 bg-success text-white"></span></h3> 
+              <div class="box-tools pull-right">
+                <a href="../home">|- Panel de Control -|   </a>
+              </div>
+            </div>
+            <div class="box-body">
+              <!-- div del tipo de grafico -->
+              
+               <div class="box box-success box-solid">
+                <div class="box-header">
+                    <h3 class="box-title">Funcionamiento de la Cinta Transportadora en Tiempo Real</h3>
+                </div>
+                <div class="box-body">
+                  <div  class="col-md- col-sm- col-xs-">
+                <div class="info-box bg-green">
+                  <span class="info-box-icon"><i class="fa fa-refresh fa-spin"></i></span>
+                  <div class="info-box-content">
+                    <div class="progress">
+                      <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                    <!-- Datos del Arduino -->
+                    <h1>
+                      <span id="velocidad_cinta" class="info-box-content"></span><span id="valor_cinta" class="info-box-content"></span>
+                    </h1>
+                    <!-- Fin Datos del Arduino -->
+                    <div class="progress">
+                      <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                </div>
+              </div>
+              <script src="/socket.io/socket.io.js"></script>
+              <script> 
+                const sockets = io();
+                let contador = 0;
+                let limiteinferior = 0;
+                //let limetesuperior = 55;
+                sockets.on('cinta:data', (dataSerial) => {
+                  var dataS = dataSerial.value;
+
+                  var show_time = document.getElementById("show_time");
+                  var current_date = new Date();
+                  var pretty_time = `${current_date.getHours()}:${current_date.getMinutes()}:${current_date.getSeconds()}`
+                  show_time.innerHTML = pretty_time;
+                  //
+                  velocidad_cinta.innerHTML = dataS.substring(0);
+                 // valor_cinta.innerHTML = dataS.substring(12,15);
+                  //console.log(dataS);VELOCIDAD : 98 - CINTA DETENIDA
+                });
+              </script>
+              <!-- Fin div del tipo de grafico -->
+            </div>
+            <!-- /.box-body-->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!--Columna del lado izquierdo-->
+        <div class="col-md-6">
+          <!-- Area chart -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <i class="fa fa-refresh fa-spin"></i>
+              <h3 class="box-title "> Escala de Velocidad Cinta Transportadora </h3>
+              <!-- Boton integrados -->
+              <div class="box-tools pull-right">
+              </div>
+            </div>
+            <div class="box-body">
+            <h3>
+             <span id="lblTempPeligro" class="p-5 mb-4 bg-danger text-white">  Detenido de 0 - 89 rpm</span>
+            </h3>
+            <h3>
+              <span id="lblTempBaja" class="p-3 mb-2 bg-primary text-white">  Velocidad Baja de 90 - 100 rpm</span>
+            </h3>
+            <h3>
+              <span id="lblTempAdecuada" class="p-3 mb-2 bg-success text-white">Velocidad Normal de 101 - 150 rpm</span>
+            </h3>
+            <h3>
+              <span id="lblTempAlta" class="p-3 mb-2 bg-warning text-dark">  Velocidad Rapida de 151 - 255 rpm</span>
+            </h3>
+            </div>
+            <!-- /.box-body-->
+          </div>
+          <!-- /.box -->
+
+        </div>
+         <!-- /.columna del lado derecha -->
+         <div class="col-md-6">
+          <!-- Area chart -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <i class="fa fa-dashboard"></i>
+              <h3 class="box-title">Control Cinta Transportadora</h3>
+            </div>
+            <form action="../../cinta/" method="post">
+              <div class="box-body">
+                    <!-- Date range -->
+                  <div class="form-group">
+                    <label>Tarea a Realizar</label>
+                    <select class="form-control select2" style="width: 100%;" name="tarea">
+                      <option>Transportando a Molino</option>
+                      <option>Transportando a Galpon</option>
+                    </select>
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <span class="input-group-addon">Velocidad</span>
+                    <input name="velocidad" type="number" class="form-control">
+                    <span class="input-group-addon">rpm</span>
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <label class="input-group-addon">Fecha de Inicio</label>
+                    <input type="date" class="form-control" name="fecha_inicio">
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <label class="input-group-addon">Hora de Inicio</label>
+                    <input type="time" class="form-control" name="hora_inicio">
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <label class="input-group-addon">Fecha de Finalización</label>
+                    <input type="date" class="form-control" name="fecha_fin">
+                  </div>
+                  <br>
+                  <div class="input-group">
+                    <label class="input-group-addon">Hora de Finalización</label>
+                    <input type="time" class="form-control" name="hora_fin">
+                  </div>
+                  <br>
+                  <input  name="usuario" type="hidden" value="<%= user.nombre%> ">
+                  <div class="box-footer">
+                    
+                    <button href="../../cinta" type="submit" class="btn btn-info pull-right">Registrar</button>
+                  </div>
+              </div>
+            </form>
+            
+            <!-- /.box-body-->
+          </div>
+          <!-- /.box -->
+
+        </div>
+        
+      </div>
+    </section>
+    <!-- /.fin main content -->
+
+  </div>
+  <!-- /.content-wrapper -->
+  <!-- /.desde el footer al final -->
+
+  <%- include("template/footer") %>
+
+  <!-- Coneccion con el arduino -->
+  <script src="/socket.io/socket.io.js">
+  </script>
+  <script src="socket-client.js">
+  </script>
+
+  </body>
+
+  </html>
